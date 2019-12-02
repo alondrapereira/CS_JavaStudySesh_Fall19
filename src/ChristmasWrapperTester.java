@@ -23,15 +23,15 @@ public class ChristmasWrapperTester {
 
 	Stack<ChristmasWrapper> toyBag1 = new Stack<ChristmasWrapper>();
 
-	
-//		[new ChristmasToy(ChristmasToy.Toy.RC, false)],
-//			[new ChristmasToy(ChristmasToy.Toy.MOONSHOES, false)],
-//			[new ChristmasToy(ChristmasToy.Toy.HOTWHEELS, false)],
-//			[new ChristmasToy(ChristmasToy.Toy.WATERSQUIRTER, false)]);
+
+	//		[new ChristmasToy(ChristmasToy.Toy.RC, false)],
+	//			[new ChristmasToy(ChristmasToy.Toy.MOONSHOES, false)],
+	//			[new ChristmasToy(ChristmasToy.Toy.HOTWHEELS, false)],
+	//			[new ChristmasToy(ChristmasToy.Toy.WATERSQUIRTER, false)]);
 
 
-			@Test
-			public void testComparator() {
+	@Test
+	public void testComparator() {
 		Comparator<ChristmasWrapper> comp = new ChristmasWrapper.ToyComparator();
 		ChristmasWrapper toy1 = new ChristmasWrapper(ChristmasWrapper.Toy.BOARDGAME, true);
 		ChristmasWrapper toy1Copy = new ChristmasWrapper(ChristmasWrapper.Toy.BOARDGAME, true);
@@ -49,14 +49,16 @@ public class ChristmasWrapperTester {
 		ChristmasWrapper priorityToy1 = new ChristmasWrapper(ChristmasWrapper.Toy.RC, true);
 		ChristmasWrapper[] toBeScannedList2 = ChristmasWrapper.copyOf(wishList2);
 		ChristmasWrapper priorityToy2 = new ChristmasWrapper(ChristmasWrapper.Toy.NERFGUN, true);
+		ChristmasWrapper[] emptyList = null;
 		Comparator<ChristmasWrapper> comp = new ChristmasWrapper.ToyComparator();
 
 		assertTrue("Priority toy for the first wish list should be RC.", 0 == comp.compare(ChristmasWrapper.priorityToy(comp, toBeScannedList1), priorityToy1));
 		assertTrue("Priority toy for the second wish list should be RC.", 0 == comp.compare(ChristmasWrapper.priorityToy(comp, toBeScannedList2), priorityToy2));
+		assertTrue("Empty lists should return null.", null == ChristmasWrapper.priorityToy(comp, emptyList));
 
 	}
 
-//	public void testNamingFilter() {
-//		assertFalse("Not yet implemented", true);
-//	}
+	//	public void testNamingFilter() {
+	//		assertFalse("Not yet implemented", true);
+	//	}
 }
