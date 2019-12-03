@@ -94,73 +94,56 @@ public class ChristmasWrapper {
 	 * @param toys - Array of toys to search
 	 * @param comp - comparator object to compare toys
 	 */
+	
 	public static ChristmasWrapper priorityToy(Comparator<ChristmasWrapper> comp, ChristmasWrapper[] wishList) {
 		/*
 		 *  TODO find the priority toy to begin working on given an array of toys
 		 *  
 		 *  The method must be used recursively
-		 *  Hint: Use the helper method below
+		 *  Use the helper method below
 		 */
-		if (wishList == null) {
-			return null;
-		}
 		
-		return priorityToyHelper(comp, wishList, 0, wishList.length - 1); //Dummy return
+		
+		return priorityToyHelper(comp, wishList, 0, 0); //Dummy return
 	}
 
 	public static ChristmasWrapper priorityToyHelper(Comparator<ChristmasWrapper> comp, ChristmasWrapper[] wishList, int first, int last) {
+		
 		/*
 		 * TODO Complete the helper method for the priorityToy method
 		 * 
-		 * Hint: Use the comparator to compare the priority between 2 toys
+		 * Hint: Use the comparator to compare the priority between 2 toys 
+		 * (Complete the compare method)
 		 */
 
-		if (last - first == 0) {
-			return wishList[first];
-		}
+		return null; //Dummy return
 		
-		if (comp.compare(wishList[first], wishList[last]) > 0) {
-			return priorityToyHelper(comp, wishList, first, last - 1);
-		} else {
-			return priorityToyHelper(comp, wishList, first + 1, last);
-		}
 		}
 
 	public static Stack<ChristmasWrapper> namingFilter(Stack<ChristmasWrapper> bag){
+		
 		/*
-		 * TODO Sometimes in a bag of gifts an elf might forget to put the name of the kid the bag is meant for. 
-		 * Complete this method so that it goes through a given stack, names all the unnamed gifts, and returns the stack 
+		 * TODO Sometimes in a bag of gifts an elf might forget to put the name
+		 * of the kid the bag is meant for. 
+		 * Complete this method so that it goes through a given stack, names all 
+		 * the unnamed gifts (sets "named" to true), and returns the stack 
 		 * in the same order as it was.
 		 * 
 		 * 
 		 * Hint: As you look through a bag, set the toys aside in order to then put them back
 		 */
-		int bagSize = bag.size();
-		Stack<ChristmasWrapper> bag2 = new Stack<ChristmasWrapper>();
 		
-		for (int i = 0; i < bagSize; i++) 
-		{
-			ChristmasWrapper inspectedToy = bag.pop();
-			if (!inspectedToy.isNamed()) 
-			{
-				inspectedToy.setNamed(true);
-			}
-			bag2.push(inspectedToy);
-		}
 		
-		for (int i = 0; i < bagSize; i++) 
-		{
-			bag.push(bag2.pop());
-		}
-		
-		return bag;
+		return null; //Dummy return
 	}
 
 	/**
 	 * @param factoryLine - Production line of toys
 	 * @return stack - Stack representing a new bag of toys for Santa to deliver
 	 */
+	
 	public static Stack<ChristmasWrapper> loadToys(Queue<ChristmasWrapper> factoryLine) {
+		
 		/*
 		 * TODO You have a production line of toys. You want to pass these toys onto
 		 * Santa's bag.
@@ -170,33 +153,11 @@ public class ChristmasWrapper {
 		 * If the toy is not named, "name" it (set to true) but send it to the back of the line. 
 		 * 
 		 * Repeat this process until the production line is empty
-		 * return the array of stacks created
+		 * return the Santa's bag as a Stack
 		 * 
 		 */
-
-		Stack<ChristmasWrapper> santaBag = new Stack<ChristmasWrapper>();
-
-		while(factoryLine.size() > 0) {
-			ChristmasWrapper toy = factoryLine.poll();
-
-			if (toy.getToy().equals(Toy.NERFGUN)) 
-			{
-				toy.setToy(Toy.WATERSQUIRTER);
-			}
-
-			if (toy.isNamed()) 
-			{
-				santaBag.add(toy);
-			} 
-			else 
-			{
-				toy.setNamed(true);
-				factoryLine.add(toy);
-			}
-		}
-
-
-		return santaBag;
+		
+		return null; //Dummy return
 	}
 
 
@@ -204,6 +165,7 @@ public class ChristmasWrapper {
 	/**
 	 * Comparator for class type card
 	 */
+	
 	public static class ToyComparator implements Comparator<ChristmasWrapper> {
 
 		public ToyComparator() {
@@ -212,15 +174,16 @@ public class ChristmasWrapper {
 
 		@Override
 		public int compare(ChristmasWrapper first, ChristmasWrapper second) {
-			/* TODO To find a toy with the higher priority, you must compare the relation of (demand / price) and return the difference
+			/* TODO To find a toy with the higher priority, you must compare the 
+			 * relation of (demand / price) and return the difference
 			 * 
-			 * If the first toy has a higher demand to price ratio, the comparison must return a positive integer, 
-			 * 0 if they're the same, and negative otherwise.
+			 * If the first toy has a higher demand to price ratio, the comparison must 
+			 * return a positive integer, 0 if they're the same, and negative otherwise.
 			 * 
 			 */
-			return first.getDemand()/first.getPrice() - second.getDemand()/second.getPrice(); //Dummy return
+			
+			
+			return -1; //Dummy return
 		}	
 	}
-
-
 }
