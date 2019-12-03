@@ -72,6 +72,22 @@ public class ChristmasWrapper {
 		}
 		return copy;
 	}
+	
+	public static boolean stacksAreEqual(Stack<ChristmasWrapper> stack1, Stack<ChristmasWrapper> stack2) {
+		if (stack1.size() != stack2.size()) {
+			return false;
+		}
+		
+		while (stack1.size() > 0) {
+			ChristmasWrapper pop1 = stack1.pop();
+			ChristmasWrapper pop2 = stack2.pop();
+			if (!pop1.equals(pop2) && (pop1.isNamed() == pop2.isNamed())) {
+				return false;
+			}
+			
+		}
+		return true;
+	}
 
 	/**
 	 * Method to find the toy in an wish list with the highest priority
@@ -132,24 +148,24 @@ public class ChristmasWrapper {
 
 		Stack<ChristmasWrapper> santaBag = new Stack<ChristmasWrapper>();
 
-		while(factoryLine.size() > 0) {
-			ChristmasWrapper toy = factoryLine.poll();
-
-			if (toy.getToy().equals(Toy.NERFGUN)) 
-			{
-				toy.setToy(Toy.WATERSQUIRTER);
-			}
-
-			if (toy.isNamed()) 
-			{
-				santaBag.add(toy);
-			} 
-			else 
-			{
-				toy.setNamed(true);
-				factoryLine.add(toy);
-			}
-		}
+//		while(factoryLine.size() > 0) {
+//			ChristmasWrapper toy = factoryLine.poll();
+//
+//			if (toy.getToy().equals(Toy.NERFGUN)) 
+//			{
+//				toy.setToy(Toy.WATERSQUIRTER);
+//			}
+//
+//			if (toy.isNamed()) 
+//			{
+//				santaBag.add(toy);
+//			} 
+//			else 
+//			{
+//				toy.setNamed(true);
+//				factoryLine.add(toy);
+//			}
+//		}
 
 
 		return santaBag;
