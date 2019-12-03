@@ -101,7 +101,7 @@ public class ChristmasWrapperTester {
 		assertTrue("Empty lists should return null.", null == ChristmasWrapper.priorityToy(comp, emptyList));
 
 	}
-
+	@Test
 	public void testNamingFilter() {
 		Stack<ChristmasWrapper> toyBagInput1 = new Stack<ChristmasWrapper>();
 		for (int i = 0; i < wishList1.length; i++) {
@@ -129,7 +129,7 @@ public class ChristmasWrapperTester {
 		assertTrue("Output is incorrect", ChristmasWrapper.stacksAreEqual(toyBagOutput3, ChristmasWrapper.namingFilter(toyBagInput3)));
 
 	}
-	
+	@Test
 	public void testLoadToys() {
 		Queue<ChristmasWrapper> productionLine1 = new LinkedList<ChristmasWrapper>();
 		Queue<ChristmasWrapper> productionLine2 = new LinkedList<ChristmasWrapper>();
