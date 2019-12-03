@@ -101,19 +101,30 @@ public class ChristmasWrapper {
 		 *  The method must be used recursively
 		 *  Hint: Use the helper method below
 		 */
-
-		return null; //Dummy return
+		if (wishList == null) {
+			return null;
+		}
+		
+		return priorityToyHelper(comp, wishList, 0, wishList.length - 1); //Dummy return
 	}
 
-	public static ChristmasWrapper[] priorityToyHelper(Comparator<ChristmasWrapper> comp, ChristmasWrapper[] wishList, ChristmasWrapper first, ChristmasWrapper last) {
+	public static ChristmasWrapper priorityToyHelper(Comparator<ChristmasWrapper> comp, ChristmasWrapper[] wishList, int first, int last) {
 		/*
 		 * TODO Complete the helper method for the priorityToy method
 		 * 
 		 * Hint: Use the comparator to compare the priority between 2 toys
 		 */
 
-		return null; //Dummy return
-	}
+		if (last - first == 0) {
+			return wishList[first];
+		}
+		
+		if (comp.compare(wishList[first], wishList[last]) > 0) {
+			return priorityToyHelper(comp, wishList, first, last - 1);
+		} else {
+			return priorityToyHelper(comp, wishList, first + 1, last);
+		}
+		}
 
 	public static Stack<ChristmasWrapper> namingFilter(Stack<ChristmasWrapper> bag){
 		/*
@@ -124,7 +135,24 @@ public class ChristmasWrapper {
 		 * 
 		 * Hint: As you look through a bag, set the toys aside in order to then put them back
 		 */
-
+		int bagSize = bag.size();
+		Stack<ChristmasWrapper> bag2 = new Stack<ChristmasWrapper>();
+		
+		for (int i = 0; i < bagSize; i++) 
+		{
+			ChristmasWrapper inspectedToy = bag.pop();
+			if (!inspectedToy.isNamed()) 
+			{
+				inspectedToy.setNamed(true);
+			}
+			bag2.push(inspectedToy);
+		}
+		
+		for (int i = 0; i < bagSize; i++) 
+		{
+			bag.push(bag2.pop());
+		}
+		
 		return bag;
 	}
 
@@ -148,24 +176,24 @@ public class ChristmasWrapper {
 
 		Stack<ChristmasWrapper> santaBag = new Stack<ChristmasWrapper>();
 
-//		while(factoryLine.size() > 0) {
-//			ChristmasWrapper toy = factoryLine.poll();
-//
-//			if (toy.getToy().equals(Toy.NERFGUN)) 
-//			{
-//				toy.setToy(Toy.WATERSQUIRTER);
-//			}
-//
-//			if (toy.isNamed()) 
-//			{
-//				santaBag.add(toy);
-//			} 
-//			else 
-//			{
-//				toy.setNamed(true);
-//				factoryLine.add(toy);
-//			}
-//		}
+		while(factoryLine.size() > 0) {
+			ChristmasWrapper toy = factoryLine.poll();
+
+			if (toy.getToy().equals(Toy.NERFGUN)) 
+			{
+				toy.setToy(Toy.WATERSQUIRTER);
+			}
+
+			if (toy.isNamed()) 
+			{
+				santaBag.add(toy);
+			} 
+			else 
+			{
+				toy.setNamed(true);
+				factoryLine.add(toy);
+			}
+		}
 
 
 		return santaBag;
@@ -190,7 +218,7 @@ public class ChristmasWrapper {
 			 * 0 if they're the same, and negative otherwise.
 			 * 
 			 */
-			return -1; //Dummy return
+			return first.getDemand()/first.getPrice() - second.getDemand()/second.getPrice(); //Dummy return
 		}	
 	}
 

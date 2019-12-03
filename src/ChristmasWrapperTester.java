@@ -49,7 +49,7 @@ public class ChristmasWrapperTester {
 	ChristmasWrapper[] santaBag1 = { //based on wishList1
 			new ChristmasWrapper(ChristmasWrapper.Toy.BOARDGAME, true),
 			new ChristmasWrapper(ChristmasWrapper.Toy.MOONSHOES, true),
-			new ChristmasWrapper(ChristmasWrapper.Toy.NERFGUN, true),
+			new ChristmasWrapper(ChristmasWrapper.Toy.WATERSQUIRTER, true),
 			new ChristmasWrapper(ChristmasWrapper.Toy.RC, true)
 	};
 	
@@ -107,6 +107,10 @@ public class ChristmasWrapperTester {
 		for (int i = 0; i < wishList1.length; i++) {
 			toyBagInput1.add(wishList1[i]);
 		}
+		Stack<ChristmasWrapper> toyBagOutput1 = new Stack<ChristmasWrapper>();
+		for (int i = 0; i < wishList1.length; i++) {
+			toyBagOutput1.add(wishList1[i]);
+		}
 		Stack<ChristmasWrapper> toyBagInput2 = new Stack<ChristmasWrapper>();
 		for (int i = 0; i < wishList2.length; i++) {
 			toyBagInput2.add(wishList2[i]);
@@ -124,7 +128,7 @@ public class ChristmasWrapperTester {
 			toyBagOutput2.add(trueWishList3[i]);
 		}
 		
-		assertTrue("Output is incorrect", ChristmasWrapper.stacksAreEqual(toyBagInput1, ChristmasWrapper.namingFilter(toyBagInput1)));
+		assertTrue("Output is incorrect", ChristmasWrapper.stacksAreEqual(toyBagOutput1, ChristmasWrapper.namingFilter(toyBagInput1)));
 		assertTrue("Output is incorrect", ChristmasWrapper.stacksAreEqual(toyBagOutput2, ChristmasWrapper.namingFilter(toyBagInput2)));
 		assertTrue("Output is incorrect", ChristmasWrapper.stacksAreEqual(toyBagOutput3, ChristmasWrapper.namingFilter(toyBagInput3)));
 
